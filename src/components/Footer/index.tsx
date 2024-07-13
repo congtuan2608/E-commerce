@@ -1,13 +1,24 @@
+"use client";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
 import { SvgIcon } from "../SvgIcon";
 import {
   NavigationMenu,
   NavigationMenuLink,
   NavigationMenuList,
 } from "../ui/navigation-menu";
-import { navs } from "./data";
+import { hideFooter, navs } from "./data";
 export const Footer = () => {
+  const pathname = usePathname();
+
+  const isHideFooter = React.useMemo(() => {
+    return hideFooter.find((s) => s === pathname);
+  }, [pathname]);
+
+  if (isHideFooter) return <footer className="dark:text-foreground"></footer>;
+
   return (
     <footer className="text-white dark:text-foreground py-10 bg-[#3C464F]">
       <div className="flex xl:max-w-screen-xl justify-between m-auto max-xl:px-6 gap-x-2 max-[900px]:flex-col max-[900px]:gap-y-4">
@@ -57,7 +68,7 @@ export const Footer = () => {
                     return (
                       <div
                         key={child.title}
-                        className="flex flex-row gap-x-1 justify-center items-center"
+                        className="flex flex-row gap-x-1 justify-start items-start max-[900px]:items-center max-[900px]:justify-center"
                       >
                         {child.icon}
                         <NavigationMenuLink

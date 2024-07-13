@@ -11,16 +11,14 @@ export const ListItem = React.forwardRef<
       <Link legacyBehavior passHref {...props} href={props.href ?? "#"}>
         <NavigationMenuLink
           className={cn(
-            "select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground flex flex-1 flex-col w-full",
+            "select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground flex flex-1 flex-col",
             className
           )}
         >
-          <div className="text-sm font-medium leading-none justify-start">
+          <span className="text-sm font-medium leading-none justify-start">
             {title}
-          </div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
+          </span>
+          {children}
         </NavigationMenuLink>
       </Link>
     </li>

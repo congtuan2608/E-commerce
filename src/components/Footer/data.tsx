@@ -106,3 +106,12 @@ export const navs: NavType[] = [
     ],
   },
 ];
+
+export const hideFooter: string[] = [
+  "/admin",
+  "/auth/login",
+  "/auth/signup",
+  "/auth/forgot-password",
+  "/auth/reset-password",
+  "/auth/verify-email",
+];
